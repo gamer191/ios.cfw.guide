@@ -10,6 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-2019, windows-2022, macos-11, macos-12, macos-13, ubuntu-20.04, ubuntu-22.04]
+        command: [build, ghbuild]
 
     steps:
       - uses: actions/checkout@v3
@@ -25,4 +26,4 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
       - name: Build VuePress site
-        run: yarn ghbuild
+        run: yarn ${{ matrix.command }}
